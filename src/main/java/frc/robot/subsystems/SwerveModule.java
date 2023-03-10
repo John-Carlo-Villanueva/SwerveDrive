@@ -1,7 +1,7 @@
 package frc.robot.subsystems;
 
+import com.revrobotics.AbsoluteEncoder;
 import com.revrobotics.CANSparkMax;
-import com.revrobotics.RelativeEncoder;
 import com.revrobotics.CANSparkMaxLowLevel.MotorType;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.math.geometry.Rotation2d;
@@ -17,8 +17,8 @@ public class SwerveModule extends SubsystemBase{
     private CANSparkMax turningMotor;
     private CANSparkMax driveMotor;
 
-    private RelativeEncoder turningEnc;
-    private RelativeEncoder driveEnc;
+    private AbsoluteEncoder turningEnc;
+    private AbsoluteEncoder driveEnc;
 
     private PIDController turningPID;
 
@@ -38,9 +38,6 @@ public class SwerveModule extends SubsystemBase{
 
         driveMotor.setInverted(driveMotorReversed);
         turningMotor.setInverted(turningMotorReversed);
-
-        driveEnc = driveMotor.getEncoder();
-        turningEnc = turningMotor.getEncoder();
 
         driveEnc.setPositionConversionFactor(ModuleConstants.kDriveEncRot2Meter);
         driveEnc.setVelocityConversionFactor(ModuleConstants.kDriveEncRPM2MeterPerSec);
@@ -77,8 +74,7 @@ public class SwerveModule extends SubsystemBase{
     }
 
     public void resetEncs(){
-        driveEnc.setPosition(0);
-        turningEnc.setPosition(getAbsoluteEncRad());
+        driveEnc.setPositionConversionFactor(0);
     }
 
     public SwerveModuleState getState(){

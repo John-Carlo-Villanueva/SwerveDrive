@@ -7,14 +7,14 @@ import edu.wpi.first.math.util.Units;
 public final class Constants {
 
   public static class ModuleConstants {
-    public static final double kWheelDiameterMeters = Units.inchesToMeters(1);
-    public static final double kDriveMotorGearRatio = 1 / 4;
-    public static final double kTurningMotorGearRatio = 1 / 4;
-    public static final double kDriveEncRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
-    public static final double kTurningEncRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
-    public static final double kDriveEncRPM2MeterPerSec = kDriveEncRot2Meter / 10;
-    public static final double kTurningEncRPM2RadPerSec = kTurningEncRot2Rad / 10;
-    public static final double kPTurning = 0.5;
+    public static double kWheelDiameterMeters = Units.inchesToMeters(1);
+    public static double kDriveMotorGearRatio = 1 / 4;
+    public static double kTurningMotorGearRatio = 1 / 4;
+    public static double kDriveEncRot2Meter = kDriveMotorGearRatio * Math.PI * kWheelDiameterMeters;
+    public static double kTurningEncRot2Rad = kTurningMotorGearRatio * 2 * Math.PI;
+    public static double kDriveEncRPM2MeterPerSec = kDriveEncRot2Meter / 10;
+    public static double kTurningEncRPM2RadPerSec = kTurningEncRot2Rad / 10;
+    public static double kPTurning = 0.5;
   }
 
   public static final class DriveConstants {
@@ -24,10 +24,10 @@ public final class Constants {
     public static final double kWheelBase = Units.inchesToMeters(1);
     // Distance between front and back wheels
     public static final SwerveDriveKinematics kDriveKinematics = new SwerveDriveKinematics(
-            new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
-            new Translation2d(kWheelBase / 2, kTrackWidth / 2),
-            new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
-            new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
+    new Translation2d(kWheelBase / 2, -kTrackWidth / 2),
+    new Translation2d(kWheelBase / 2, kTrackWidth / 2),
+    new Translation2d(-kWheelBase / 2, -kTrackWidth / 2),
+    new Translation2d(-kWheelBase / 2, kTrackWidth / 2));
 
     public static final int kFrontLeftDriveMotorPort = 1;
     public static final int kBackLeftDriveMotorPort = 2;
@@ -71,5 +71,11 @@ public final class Constants {
     public static final double kTeleDriveMaxAngularSpeedRadiansPerSecond = kPhysicalMaxAngularSpeedRadiansPerSecond / 4;
     public static final double kTeleDriveMaxAccelerationUnitsPerSecond = 3;
     public static final double kTeleDriveMaxAngularAccelerationUnitsPerSecond = 3;
+  }
+
+  public static final class OIConstants {
+      public static final int kDriverControllerPort = 0;
+      
+      public static final double kDeadband = 0.05;
   }
 }
